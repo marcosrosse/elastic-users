@@ -14,7 +14,7 @@ elasticsearch_user_api = "/_security/user/"
 base_url = elasticsearch_url + ":" + elasticsearch_port
 
 def createElasticUser():
-  reader = openCSVFile("csv/users.csv")
+  reader = openCSVFile("csv/create-users.csv")
   for row in reader:
 
     print("Trying to create role: ", row["roles"])
