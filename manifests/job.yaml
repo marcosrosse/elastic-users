@@ -1,0 +1,62 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: job-elastic-users
+spec:
+  template:
+    metadata:
+    spec:
+      volumes:
+        - name: createusers-csv
+          configMap:
+              name: cm-elastic-users-csv
+              items:
+                - key: create-users.csv
+                  path: create-users.csv
+        - name: deleteeusers-csv
+          configMap:
+              name: cm-elastic-users-csv
+              items:
+                - key: delete-users.csv
+                  path: delete-users.csv
+      containers:
+      - image: elastic-users-job:latest
+        name: job-elastic-users
+        env:
+          - name: COMMAND
+            value: "createElasticUser"
+          # - name: COMMAND
+          #   value: "deleteElasticUser"
+          - name: ELASTICSEARCH_URL
+            valueFrom:
+              secretKeyRef:
+                key: elasticsearch.url
+                name: secret-elasticsearch-config
+          - name: ELASTICSEARCH_USERNAME
+            valueFrom:
+              secretKeyRef:
+                key: elasticsearch.username
+                name: secret-elasticsearch-config
+          - name: ELASTICSEARCH_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: elasticsearch.password
+                name: secret-elasticsearch-config
+          - name: ELASTICSEARCH_PORT
+            value: "9200"
+        volumeMounts:
+          - name: createusers-csv
+            mountPath: /usr/src/app/csv/create-users.csv
+            subPath: create-users.csv
+          - name: deleteusers-csv
+            mountPath: /usr/src/app/csv/delete-users.csv
+            subPath: delete-users.csv
+        resources:
+          requests:
+            memory: 64Mi
+            cpu: 10m
+          limits:
+            memory: 512Mi
+            cpu: 20m
+      restartPolicy: Never
+status: {}
