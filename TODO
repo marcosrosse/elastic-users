@@ -1,2 +1,3 @@
-Create a Dockerfile with the CMD or ENTRYPOINT with something like this: python main.py $STARTUP
-Create a Kubernetes Job Manifest to be deployed
+- [X] Create a Dockerfile with the CMD or ENTRYPOINT with something like this: python main.py $COMMAND
+- [X] Create a Kubernetes Job Manifest to be deployed
+- [ ] Write the Readme.md
