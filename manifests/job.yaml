@@ -20,7 +20,7 @@ spec:
                 - key: delete-users.csv
                   path: delete-users.csv
       containers:
-      - image: marcosrossem/elastic-users-job:latest
+      - image: marcosrossem/py-elastic-users-job:latest
         name: job-elastic-users
         env:
           - name: COMMAND
