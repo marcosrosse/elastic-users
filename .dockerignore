@@ -1,5 +1,7 @@
 *.csv
 .git
+*.pyc
+__pycache__
 TODO
 exports.sh
 manifests
