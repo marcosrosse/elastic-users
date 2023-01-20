@@ -1,3 +1,7 @@
+- [ ] Write the Readme.md
 - [X] Create a Dockerfile with the CMD or ENTRYPOINT with something like this: python main.py $COMMAND
 - [X] Create a Kubernetes Job Manifest to be deployed
-- [ ] Write the Readme.md
+- [ ] Convert manifests yaml file to Helm Chart
+- [ ] Add Run mode in the Helm chart values (create or delete functions)
+- [ ] Implement change password function?
+- [ ] Change from CSV to JSON. We'll be able to set more than one role per user
