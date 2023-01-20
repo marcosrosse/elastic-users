@@ -1,0 +1,40 @@
+// Use as example in the future when change from csv to json
+
+[
+  {
+    "username": "marcos",
+    "fullname": "marcos rosse",
+    "email": "example@example.com",
+    "password": "abcd123",
+    "userrole": "userrole",
+    "aditionalroles": [
+      "reade",
+      "write",
+      "delete"
+    ]
+  },
+  {
+    "username": "john",
+    "fullname": "john doe",
+    "email": "example@example.com",
+    "password": "abcd123",
+    "userrole": "userrole",
+    "aditionalroles": [
+      "reade",
+      "write",
+      "delete"
+    ]
+  },
+  {
+    "username": "foo",
+    "fullname": "foo bar",
+    "email": "example@example.com",
+    "password": "abcd123",
+    "userrole": "userrole",
+    "aditionalroles": [
+      "reade",
+      "write",
+      "delete"
+    ]
+  }
+]
