@@ -14,7 +14,7 @@ elasticsearch_user_api = "/_security/user/"
 base_url = elasticsearch_url + ":" + elasticsearch_port
 
 def createElasticUser():
-  reader = openCSVFile("csv/create-users.csv")
+  reader = openCSVFile("src/csv/create-users.csv")
   for row in reader:
 
     print("Trying to create role: ", row["roles"])
@@ -54,7 +54,7 @@ def createElasticUser():
 
 def deleteElasticUser():
 
-  reader = openCSVFile("csv/delete-users.csv")
+  reader = openCSVFile("src/csv/delete-users.csv")
   for row in reader:
       try:
         r = requests.delete(base_url+elasticsearch_role_api+row["roles"], headers = {"Content-Type": "application/json"}, auth = (elasticsearch_username, elasticsearch_password))
