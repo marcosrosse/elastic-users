@@ -33,7 +33,7 @@ def createElasticUser():
     print(rolepayload)
     try:
       r = requests.post(base_url + elasticsearch_role_api + indice["rolename"], data = rolepayload, headers = {"Content-Type": "application/json"}, auth = (elasticsearch_username, elasticsearch_password))
-      print("Role", indice["rolename"], "created", r.text, '\n')
+      print(r.text, '\n')
     except:
       print("An error occurred when trying to create the role", indice["rolename"], "on Elasticsearch")
 
@@ -54,7 +54,7 @@ def createElasticUser():
 
     try:
       r = requests.post(base_url + elasticsearch_user_api + indice["username"], userpayload, headers = {"Content-Type": "application/json"}, auth= (elasticsearch_username, elasticsearch_password))
-      print ("User", indice["username"], "created", r.text, '\n')
+      print (r.text, '\n')
     except:
       print("An error occurred when trying to create the user", indice["username"], "on Elasticsearch")
 
@@ -66,12 +66,12 @@ def deleteElasticUser():
   for indice in json_obj["users"]:
       try:
         r = requests.delete(base_url+elasticsearch_role_api+indice["rolename"], headers = {"Content-Type": "application/json"}, auth = (elasticsearch_username, elasticsearch_password))
-        print("Role", indice["rolename"], "deleted", r.text, '\n')
+        print(r.text, '\n')
       except:
         print("An error occurred when trying to delete the role", indice["username"], "on Elasticsearch")
 
       try:
         r = requests.delete(base_url + elasticsearch_user_api + indice["username"], headers = {"Content-Type": "application/json"}, auth = (elasticsearch_username, elasticsearch_password))
-        print ("User", indice["username"], "deleted", r.text, '\n')
+        print (r.text, '\n')
       except:
         print("An error occurred when trying to delete the user", indice["username"], "on Elasticsearch")
