@@ -15,7 +15,7 @@ base_url = elasticsearch_url + ":" + elasticsearch_port
 
 def createElasticUser():
 
-  json_obj = openJSON("src/example.json")
+  json_obj = openJSON("src/create-users.json")
 
   for indice in json_obj["users"]:
   
@@ -61,7 +61,7 @@ def createElasticUser():
 
 def deleteElasticUser():
 
-  json_obj = openJSON("src/example.json")
+  json_obj = openJSON("src/delete-users.json")
 
   for indice in json_obj["users"]:
       try:

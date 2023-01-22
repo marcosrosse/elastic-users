@@ -1,0 +1,37 @@
+{
+  "users": [
+    { 
+      "username": "marcos",
+      "fullname": "marcos rosse",
+      "email": "example@example.com",
+      "password": "abcd123",
+      "rolename": "marcos_role",
+      "roles": [
+        "kibana_user",
+        "kibana_admin",
+        "reporting_user",
+        "marcos_role"
+      ],
+      "userroleprivileges": [
+        "read",
+        "write"
+      ]
+    },
+    { 
+      "username": "foo",
+      "fullname": "foo bar",
+      "email": "example@example.com",
+      "password": "abcd123",
+      "rolename": "foo_role",
+      "roles": [
+        "kibana_user",
+        "kibana_admin",
+        "reporting_user",
+        "foo_role"
+      ],
+      "userroleprivileges": [
+        "read"
+      ]
+    }
+  ]
+}

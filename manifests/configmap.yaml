@@ -1,16 +1,82 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: cm-elastic-users-csv
+  name: cm-elastic-users-json
 data:
-  create-users.csv: |-
-    username,fullname,password,roles
-    marcos,marcos rosse,abcd123,marcos_role
-    john,john doe,abcd123,john_role
-    foo,foo bar,abcd123,foo_role
-  delete-users.csv: |-
-    username,fullname,password,roles
-    marcos,marcos rosse,abcd123,marcos_role
-    john,john doe,abcd123,john_role
-    foo,foo bar,abcd123,foo_role
+  create-users.json: |-
+    {
+      "users": [
+        { 
+          "username": "marcos",
+          "fullname": "marcos rosse",
+          "email": "example@example.com",
+          "password": "abcd123",
+          "rolename": "marcos_role",
+          "roles": [
+            "kibana_user",
+            "kibana_admin",
+            "reporting_user",
+            "marcos_role"
+          ],
+          "userroleprivileges": [
+            "read",
+            "write"
+          ]
+        },
+        { 
+          "username": "foo",
+          "fullname": "foo bar",
+          "email": "example@example.com",
+          "password": "abcd123",
+          "rolename": "foo_role",
+          "roles": [
+            "kibana_user",
+            "kibana_admin",
+            "reporting_user",
+            "foo_role"
+          ],
+          "userroleprivileges": [
+            "read"
+          ]
+        }
+      ]
+    }
+  delete-users.json: |-
+    {
+      "users": [
+        { 
+          "username": "marcos",
+          "fullname": "marcos rosse",
+          "email": "example@example.com",
+          "password": "abcd123",
+          "rolename": "marcos_role",
+          "roles": [
+            "kibana_user",
+            "kibana_admin",
+            "reporting_user",
+            "marcos_role"
+          ],
+          "userroleprivileges": [
+            "read",
+            "write"
+          ]
+        },
+        { 
+          "username": "foo",
+          "fullname": "foo bar",
+          "email": "example@example.com",
+          "password": "abcd123",
+          "rolename": "foo_role",
+          "roles": [
+            "kibana_user",
+            "kibana_admin",
+            "reporting_user",
+            "foo_role"
+          ],
+          "userroleprivileges": [
+            "read"
+          ]
+        }
+      ]
+    }
   

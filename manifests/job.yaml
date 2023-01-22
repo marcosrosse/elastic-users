@@ -9,16 +9,16 @@ spec:
       volumes:
         - name: createusers-csv
           configMap:
-              name: cm-elastic-users-csv
+              name: cm-elastic-users-json
               items:
-                - key: create-users.csv
-                  path: create-users.csv
-        - name: deleteeusers-csv
+                - key: create-users.json
+                  path: create-users.json
+        - name: deleteeusers-json
           configMap:
-              name: cm-elastic-users-csv
+              name: cm-elastic-users-json
               items:
-                - key: delete-users.csv
-                  path: delete-users.csv
+                - key: delete-users.json
+                  path: delete-users.json
       containers:
       - image: marcosrossem/py-elastic-users-job:latest
         name: job-elastic-users
@@ -45,12 +45,12 @@ spec:
           - name: ELASTICSEARCH_PORT
             value: "9200"
         volumeMounts:
-          - name: createusers-csv
-            mountPath: /usr/src/app/csv/create-users.csv
-            subPath: create-users.csv
-          - name: deleteusers-csv
-            mountPath: /usr/src/app/csv/delete-users.csv
-            subPath: delete-users.csv
+          - name: createusers-json
+            mountPath: /usr/src/app/json/create-users.json
+            subPath: create-users.json
+          - name: deleteusers-json
+            mountPath: /usr/src/app/json/delete-users.json
+            subPath: delete-users.json
         resources:
           requests:
             memory: 64Mi
