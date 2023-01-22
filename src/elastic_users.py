@@ -41,13 +41,15 @@ def createElasticUser():
     payload = json.dumps({
         "password" : indice["password"],
         "enabled": True,
-        "roles" : [ indice["userrole"], indice["aditionalroles"] ],
+        "roles" : indice["roles"],
         "full_name" : indice["fullname"],
         "email" : indice["email"],
         "metadata" : {
           "intelligence" : 7
         }
       })
+
+    print(payload)
 
     try:
       r = requests.post(base_url + elasticsearch_user_api + indice["username"], payload, headers = {"Content-Type": "application/json"}, auth= (elasticsearch_username, elasticsearch_password))

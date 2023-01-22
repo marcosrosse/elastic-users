@@ -5,11 +5,12 @@
       "fullname": "marcos rosse",
       "email": "example@example.com",
       "password": "abcd123",
-      "userrole": "marcos_role",
-      "aditionalroles": [
-        "read",
-        "write",
-        "delete"
+      "rolename": "marcos_role",
+      "roles": [
+        "kibana_user",
+        "kibana_admin",
+        "reporting_user",
+        "marcos_role"
       ],
       "userroleprivileges": [
         "read",
@@ -21,11 +22,12 @@
       "fullname": "foo bar",
       "email": "example@example.com",
       "password": "abcd123",
-      "userrole": "foo_role",
-      "aditionalroles": [
-        "read",
-        "write",
-        "delete"
+      "rolename": "foo_role",
+      "roles": [
+        "kibana_user",
+        "kibana_admin",
+        "reporting_user",
+        "foo_role"
       ],
       "userroleprivileges": [
         "read"
