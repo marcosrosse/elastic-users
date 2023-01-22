@@ -1,1 +1,1 @@
-A Python script to create and delete users and roles in Elasticsearch based on a CSV file.
+A Python script to create and delete users and roles in Elasticsearch based on a JSON file.
