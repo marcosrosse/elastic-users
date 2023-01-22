@@ -6,3 +6,4 @@
 - [ ] Implement change password function?
 - [X] Change from CSV to JSON. We'll be able to set more than one role per user
 - [ ] Improve response output
+- [ ] Improve JSON structure
