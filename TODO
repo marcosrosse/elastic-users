@@ -4,4 +4,5 @@
 - [ ] Convert manifests yaml file to Helm Chart
 - [ ] Add Run mode in the Helm chart values (create or delete functions)
 - [ ] Implement change password function?
-- [ ] Change from CSV to JSON. We'll be able to set more than one role per user
+- [X] Change from CSV to JSON. We'll be able to set more than one role per user
+- [ ] Improve response output
