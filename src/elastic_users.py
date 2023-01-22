@@ -19,7 +19,7 @@ def createElasticUser():
 
   for indice in json_obj["users"]:
   
-    print("Trying to create role: ", indice["userrole"])
+    print("Trying to create role: ", indice["rolename"])
     payload = json.dumps({
           "cluster": ["all"],
           "indices": [
@@ -31,10 +31,10 @@ def createElasticUser():
         })
 
     try:
-      r = requests.post(base_url + elasticsearch_role_api + indice["userrole"], data = payload, headers = {"Content-Type": "application/json"}, auth = (elasticsearch_username, elasticsearch_password))
+      r = requests.post(base_url + elasticsearch_role_api + indice["rolename"], data = payload, headers = {"Content-Type": "application/json"}, auth = (elasticsearch_username, elasticsearch_password))
       print(r.text, '\n')
     except:
-      print("An error occurred when trying to create the role", indice["role"], "on Elasticsearch")
+      print("An error occurred when trying to create the role", indice["rolename"], "on Elasticsearch")
 
 
     print("Trying to create user: ", indice["username"])
