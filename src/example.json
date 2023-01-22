@@ -1,40 +1,35 @@
-// Use as example in the future when change from csv to json
-
-[
-  {
-    "username": "marcos",
-    "fullname": "marcos rosse",
-    "email": "example@example.com",
-    "password": "abcd123",
-    "userrole": "userrole",
-    "aditionalroles": [
-      "reade",
-      "write",
-      "delete"
-    ]
-  },
-  {
-    "username": "john",
-    "fullname": "john doe",
-    "email": "example@example.com",
-    "password": "abcd123",
-    "userrole": "userrole",
-    "aditionalroles": [
-      "reade",
-      "write",
-      "delete"
-    ]
-  },
-  {
-    "username": "foo",
-    "fullname": "foo bar",
-    "email": "example@example.com",
-    "password": "abcd123",
-    "userrole": "userrole",
-    "aditionalroles": [
-      "reade",
-      "write",
-      "delete"
-    ]
-  }
-]
+{
+  "users": [
+    { 
+      "username": "marcos",
+      "fullname": "marcos rosse",
+      "email": "example@example.com",
+      "password": "abcd123",
+      "userrole": "marcos_role",
+      "aditionalroles": [
+        "read",
+        "write",
+        "delete"
+      ],
+      "userroleprivileges": [
+        "read",
+        "write"
+      ]
+    },
+    { 
+      "username": "foo",
+      "fullname": "foo bar",
+      "email": "example@example.com",
+      "password": "abcd123",
+      "userrole": "foo_role",
+      "aditionalroles": [
+        "read",
+        "write",
+        "delete"
+      ],
+      "userroleprivileges": [
+        "read"
+      ]
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-from src.open_csv_file import *
+from src.open_json import *
 import os
 from pickle import TRUE
 import requests
@@ -14,56 +14,61 @@ elasticsearch_user_api = "/_security/user/"
 base_url = elasticsearch_url + ":" + elasticsearch_port
 
 def createElasticUser():
-  reader = openCSVFile("src/csv/create-users.csv")
-  for row in reader:
 
-    print("Trying to create role: ", row["roles"])
+  json_obj = openJSON("src/example.json")
+
+  for indice in json_obj["users"]:
+  
+    print("Trying to create role: ", indice["userrole"])
     payload = json.dumps({
           "cluster": ["all"],
           "indices": [
             {
               "names": [ "*" ],
-              "privileges": ["read", "write"]
+              "privileges": indice["userroleprivileges"]
               }
           ]
         })
+
     try:
-      r = requests.post(base_url + elasticsearch_role_api + row["roles"], data = payload, headers = {"Content-Type": "application/json"}, auth = (elasticsearch_username, elasticsearch_password))
+      r = requests.post(base_url + elasticsearch_role_api + indice["userrole"], data = payload, headers = {"Content-Type": "application/json"}, auth = (elasticsearch_username, elasticsearch_password))
       print(r.text, '\n')
     except:
-      print("An error occurred when trying to create the role", row["role"], "on Elasticsearch")
+      print("An error occurred when trying to create the role", indice["role"], "on Elasticsearch")
 
 
-    print("Trying to create user: ", row["username"])
+    print("Trying to create user: ", indice["username"])
     payload = json.dumps({
-        "password" : row['password'],
+        "password" : indice["password"],
         "enabled": True,
-        "roles" : [ "kibana_user", "kibana_admin", "reporting_user", row['roles'] ],
-        "full_name" : row['fullname'],
-        "email" : "",
+        "roles" : [ indice["userrole"], indice["aditionalroles"] ],
+        "full_name" : indice["fullname"],
+        "email" : indice["email"],
         "metadata" : {
           "intelligence" : 7
         }
       })
+
     try:
-      r = requests.post(base_url + elasticsearch_user_api + row["username"], payload, headers = {"Content-Type": "application/json"}, auth= (elasticsearch_username, elasticsearch_password))
+      r = requests.post(base_url + elasticsearch_user_api + indice["username"], payload, headers = {"Content-Type": "application/json"}, auth= (elasticsearch_username, elasticsearch_password))
       print (r.text, '\n')
     except:
-      print("An error occurred when trying to create the user", row["username"], "on Elasticsearch")
+      print("An error occurred when trying to create the user", indice["username"], "on Elasticsearch")
 
 
 def deleteElasticUser():
 
-  reader = openCSVFile("src/csv/delete-users.csv")
-  for row in reader:
+  json_obj = openJSON("src/example.json")
+
+  for indice in json_obj["users"]:
       try:
-        r = requests.delete(base_url+elasticsearch_role_api+row["roles"], headers = {"Content-Type": "application/json"}, auth = (elasticsearch_username, elasticsearch_password))
+        r = requests.delete(base_url+elasticsearch_role_api+indice["userrole"], headers = {"Content-Type": "application/json"}, auth = (elasticsearch_username, elasticsearch_password))
         print(r.text, '\n')
       except:
-        print("An error occurred when trying to delete the role", row["username"], "on Elasticsearch")
+        print("An error occurred when trying to delete the role", indice["username"], "on Elasticsearch")
 
       try:
-        r = requests.delete(base_url + elasticsearch_user_api + row["username"], headers = {"Content-Type": "application/json"}, auth = (elasticsearch_username, elasticsearch_password))
+        r = requests.delete(base_url + elasticsearch_user_api + indice["username"], headers = {"Content-Type": "application/json"}, auth = (elasticsearch_username, elasticsearch_password))
         print (r.text, '\n')
       except:
-        print("An error occurred when trying to delete the user", row["username"], "on Elasticsearch")
+        print("An error occurred when trying to delete the user", indice["username"], "on Elasticsearch")
