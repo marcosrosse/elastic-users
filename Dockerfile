@@ -10,4 +10,6 @@ ADD . .
 
 RUN chmod -Rv 775 *
 
-ENTRYPOINT python ./main.py $COMMAND
+USER 1000
+
+ENTRYPOINT ["python", "./main.py"]

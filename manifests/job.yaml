@@ -44,6 +44,7 @@ spec:
                 name: secret-elasticsearch-config
           - name: ELASTICSEARCH_PORT
             value: "9200"
+        args: [$COMMAND]
         volumeMounts:
           - name: createusers-json
             mountPath: /usr/src/app/json/create-users.json
